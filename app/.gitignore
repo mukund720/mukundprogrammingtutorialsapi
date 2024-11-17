@@ -1,0 +1,35 @@
+# Ignore Composer vendor directory
+/vendor/
+
+# Ignore PHPUnit output
+.phpunit.result.cache
+
+# Ignore .env files for environment variables
+.env
+
+# Ignore application logs
+/application/logs/
+
+# Ignore cache files
+/system/cache/
+# Ignore application and system files that should not be in version control
+/application/config/*
+/system/config/*
+/public/uploads/*
+
+# Ignore node_modules if you're using Node.js for frontend
+/node_modules/
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore PHP session files
+/session/
+
+# Ignore .env.local files for local environment setup
+.env.local
