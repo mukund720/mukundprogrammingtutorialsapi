@@ -13,7 +13,7 @@ class UserModel extends Model
     protected $allowedFields = ['name', 'email', 'password', 'insertDate', 'updateDate']; 
 
     // Enable timestamps (this will auto-update the `insertDate` and `updateDate` fields)
-    protected $useTimestamps = true; // Automatically manage `insertDate` and `updateDate` timestamps
+    protected $useTimestamps = false; // Automatically manage `insertDate` and `updateDate` timestamps
 
     // Specify the date format if necessary
     protected $dateFormat = 'datetime';

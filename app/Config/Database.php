@@ -26,7 +26,7 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => '178.16.136.61',
+        'hostname'     => 'localhost',
         'username'     => 'u910442931_admin',
         'password'     => 'B560b560@',
         'database'     => 'u910442931_mpt',

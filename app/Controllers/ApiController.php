@@ -38,31 +38,33 @@ class ApiController extends ResourceController
         }
     }
 
-    // Create method (POST /api/items)
-    public function create()
-    {
-        // Get the input data
-        $input = $this->request->getPost();
-        
-        // Ensure the password is hashed before storing it
-        if (isset($input['password'])) {
-            $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
-        } else {
-            return $this->failValidationError('Password is required');
-        }
-
-        // Insert the new data into the model
-        if ($this->model->insert($input)) {
-            return $this->respondCreated($input);
-        } else {
-            return $this->failValidationErrors('Invalid data');
-        }
+public function create()
+{
+    header('Content-type: application/json');
+    $input = json_decode(file_get_contents('php://input'), true);
+    // Ensure the password is hashed before storing it
+    if (isset($input['password'])) {
+        $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
+    } else {
+        return $this->failValidationError('Password is required');
     }
+
+    // Insert the new data into the model
+    if ($this->model->insert($input)) {
+        return $this->respondCreated($input);
+    } else {
+        return $this->failValidationErrors('Invalid data');
+    }
+}
+
+
+
 
     // Update method (PUT /api/items/{id})
     public function update($id = null)
     {
-        $input = $this->request->getRawInput();
+       header('Content-type: application/json');
+    $input = json_decode(file_get_contents('php://input'), true);
         
         // If password is being updated, hash it
         if (isset($input['password'])) {
@@ -89,9 +91,11 @@ class ApiController extends ResourceController
     // Login method (POST /api/login)
     public function login()
     {
+        header('Content-type: application/json');
+    $input = json_decode(file_get_contents('php://input'), true);
         // Get the input data (email and password)
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $email = $input['email'];
+        $password = $input['password'];
         
         // Validate input
         if (empty($email) || empty($password)) {
