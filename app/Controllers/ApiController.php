@@ -15,7 +15,7 @@ class ApiController extends ResourceController
         try {
             // Fetch all data from the model
             $data = $this->model->findAll();
-    
+
             if ($data) {
                 return $this->respond($data);
             } else {
@@ -25,37 +25,39 @@ class ApiController extends ResourceController
             return $this->failServerError('An error occurred: ' . $e->getMessage());
         }
     }
-    
+
 
     // Show method (GET /api/items/{id})
     public function show($id = null)
     {
-        $data = $this->model->find($id);
-        if ($data) {
-            return $this->respond($data);
+        // Assuming `$id` is the email
+        $user = $this->model->where('email', $id)->first();
+    
+        if ($user) {
+            return $this->respond($user);
         } else {
-            return $this->failNotFound('Item not found');
+            return $this->failNotFound('User not found');
         }
     }
 
-public function create()
-{
-    header('Content-type: application/json');
-    $input = json_decode(file_get_contents('php://input'), true);
-    // Ensure the password is hashed before storing it
-    if (isset($input['password'])) {
-        $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
-    } else {
-        return $this->failValidationError('Password is required');
-    }
+    public function create()
+    {
+        header('Content-type: application/json');
+        $input = json_decode(file_get_contents('php://input'), true);
+        // Ensure the password is hashed before storing it
+        if (isset($input['password'])) {
+            $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
+        } else {
+            return $this->failValidationError('Password is required');
+        }
 
-    // Insert the new data into the model
-    if ($this->model->insert($input)) {
-        return $this->respondCreated($input);
-    } else {
-        return $this->failValidationErrors('Invalid data');
+        // Insert the new data into the model
+        if ($this->model->insert($input)) {
+            return $this->respondCreated($input);
+        } else {
+            return $this->failValidationErrors('Invalid data');
+        }
     }
-}
 
 
 
@@ -63,9 +65,9 @@ public function create()
     // Update method (PUT /api/items/{id})
     public function update($id = null)
     {
-       header('Content-type: application/json');
-    $input = json_decode(file_get_contents('php://input'), true);
-        
+        header('Content-type: application/json');
+        $input = json_decode(file_get_contents('php://input'), true);
+
         // If password is being updated, hash it
         if (isset($input['password'])) {
             $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
@@ -92,19 +94,19 @@ public function create()
     public function login()
     {
         header('Content-type: application/json');
-    $input = json_decode(file_get_contents('php://input'), true);
+        $input = json_decode(file_get_contents('php://input'), true);
         // Get the input data (email and password)
         $email = $input['email'];
         $password = $input['password'];
-        
+
         // Validate input
         if (empty($email) || empty($password)) {
             return $this->failValidationError('Email and password are required');
         }
-        
+
         // Find the user by email
         $user = $this->model->findByEmail($email);
-    
+
         if ($user) {
             // Verify the password (Assume passwords are hashed in the database)
             if (password_verify($password, $user['password'])) {
