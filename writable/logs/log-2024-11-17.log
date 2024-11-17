@@ -1,0 +1,96 @@
+ERROR - 2024-11-17 08:00:48 --> Error connecting to the database: mysqli_sql_exception: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('49.207.57.9', 'u910442931_admi...', Object(SensitiveParameterValue), 'u910442931_mpt', 3306, '', 0)
+#1 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\mukundprogrammingtutorilasapi\app\Controllers\ApiController.php(18): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(933): App\Controllers\ApiController->index()
+#8 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ApiController))
+#9 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\mukundprogrammingtutorilasapi\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp\htdocs\mukundprogrammingtutorilasapi\app\Controllers\ApiController.php(18): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(933): App\Controllers\ApiController->index()
+#7 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ApiController))
+#8 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\mukundprogrammingtutorilasapi\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-17 08:00:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[Method: GET, Route: api/users]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\ApiController.php(18): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ApiController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ApiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-17 08:05:01 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'u910442931_admin'@'49.207.57.9' (using password: YES) in C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('178.16.136.61', 'u910442931_admi...', Object(SensitiveParameterValue), 'u910442931_mpt', 3306, '', 0)
+#1 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\mukundprogrammingtutorilasapi\app\Controllers\ApiController.php(18): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(933): App\Controllers\ApiController->index()
+#8 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ApiController))
+#9 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\mukundprogrammingtutorilasapi\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'49.207.57.9' (using password: YES) in C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp\htdocs\mukundprogrammingtutorilasapi\app\Controllers\ApiController.php(18): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(933): App\Controllers\ApiController->index()
+#7 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ApiController))
+#8 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\mukundprogrammingtutorilasapi\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\mukundprogrammingtutorilasapi\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-17 08:05:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'49.207.57.9' (using password: YES)
+[Method: GET, Route: api/users]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\ApiController.php(18): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ApiController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ApiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
