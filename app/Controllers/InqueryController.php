@@ -40,18 +40,26 @@ class InqueryController extends ResourceController
         }
     }
 
-    public function create()
-    {
-        header('Content-type: application/json');
-        $input = json_decode(file_get_contents('php://input'), true);
+   public function create()
+{
+    header('Content-type: application/json');
+    $input = json_decode(file_get_contents('php://input'), true);
 
-        // Insert the new data into the model
-        if ($this->model->insert($input)) {
-            return $this->respondCreated($input);
-        } else {
-            return $this->failValidationErrors('Invalid data');
-        }
+    // Validate data
+    if (!$this->validate($this->model->getValidationRules(), $input)) {
+        $errors = $this->validator->getErrors();
+        log_message('error', 'Validation Errors: ' . json_encode($errors));
+        return $this->failValidationErrors($errors);
     }
+
+    // Insert the data
+    if ($this->model->insert($input)) {
+        return $this->respondCreated($input);
+    } else {
+        return $this->failValidationErrors('Failed to insert data.');
+    }
+}
+
 
 
     // Delete method (DELETE /api/items/{id})
