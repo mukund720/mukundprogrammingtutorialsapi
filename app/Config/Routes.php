@@ -13,5 +13,8 @@ $routes->group('api', function($routes) {
     $routes->put('users/(:num)', 'ApiController::update/$1');
     $routes->delete('users/(:num)', 'ApiController::delete/$1');
     $routes->post('users/login', 'ApiController::login');
+    $routes->get('inquery', 'InqueryController::index');
+    $routes->post('inquery', 'InqueryController::create');
+
 
 });
