@@ -16,5 +16,12 @@ $routes->group('api', function($routes) {
     $routes->get('inquery', 'InqueryController::index');
     $routes->post('inquery', 'InqueryController::create');
 
+    $routes->get('courses/all', 'CourseController::fetchAllRelatedData');  // Changed from 'items' to 'courses'
+    $routes->get('courses/short', 'CourseController::fetchFewRelatedData');  // Changed from 'items' to 'courses'
+    $routes->post('courses', 'CourseController::create');
+    $routes->put('courses/(:num)', 'CourseController::update/$1');
+    $routes->delete('courses/(:num)', 'CourseController::delete/$1');
+    $routes->get('courses/(:num)/related', 'CourseController::fetchAllRelatedDataById/$1');
+
 
 });
