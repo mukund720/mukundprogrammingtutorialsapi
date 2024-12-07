@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
-
+header('Access-Control-Allow-Origin: *');
 class CourseController extends ResourceController
 {
     protected $modelName = 'App\Models\CourseModel';
@@ -103,6 +103,7 @@ class CourseController extends ResourceController
         }
     
         $relatedTables = [
+            'CourseBulletPoints'    => 'bulletPointId',
             'CourseAuthors'         => 'authorId',
             'CourseCertificates'    => 'certificateId',
             'CourseCoupons'         => 'couponId',
@@ -155,6 +156,8 @@ class CourseController extends ResourceController
  
          // Fetch related data
          $relatedTables = [
+            'CourseBulletPoints'    => 'bulletPointId',
+
              'CourseAuthors'         => 'authorId',
              'CourseCertificates'    => 'certificateId',
              'CourseCoupons'         => 'couponId',
@@ -198,4 +201,56 @@ class CourseController extends ResourceController
 
          return $this->respond($response);
      }
+
+       // Fetch data from all related tables for a given courseId
+       public function fetchAllRelatedDataByCategoryDisplayId($id)
+       {
+        $db = \Config\Database::connect();
+    
+        // Fetch all courses data
+         $courses = $db->table('Courses')->where('categoryDisplayId', $id)->get()->getResultArray();
+
+        if (!$courses) {
+            return $this->failNotFound('No courses found.');
+        }
+    
+        $relatedTables = [
+            'Topics'                => 'topicId'
+        ];
+    
+        $response = [];
+        
+        // Loop through each course to fetch its related data
+        foreach ($courses as $course) {
+            $courseData = $course;
+    
+            // Fetch related data for each course
+            foreach ($relatedTables as $table => $foreignKey) {
+                $courseData[$table] = $db->table($table)
+                    ->where('courseId', $course['id'])
+                    ->get()
+                    ->getResultArray();
+            }
+    
+            $response[] = $courseData;
+        }
+    
+        return $this->respond($response);
+    
+       }
+         // Fetch data all course category
+         public function fetchAllCategory()
+         {
+          $db = \Config\Database::connect();
+      
+          // Fetch all courses data
+          $courses = $db->table('CourseCategory')->get()->getResultArray();
+      
+          if (!$courses) {
+              return $this->failNotFound('No Course Category found.');
+          }
+      
+          return $this->respond($courses);
+      
+         }
 }

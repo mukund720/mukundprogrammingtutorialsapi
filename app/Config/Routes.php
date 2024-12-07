@@ -22,6 +22,8 @@ $routes->group('api', function($routes) {
     $routes->put('courses/(:num)', 'CourseController::update/$1');
     $routes->delete('courses/(:num)', 'CourseController::delete/$1');
     $routes->get('courses/(:num)/related', 'CourseController::fetchAllRelatedDataById/$1');
+    $routes->get('courses/category', 'CourseController::fetchAllCategory');  // Changed from 'items' to 'courses'
+    $routes->get('courses/categroy/(:any)', 'CourseController::fetchAllRelatedDataByCategoryDisplayId/$1');
 
 
 });

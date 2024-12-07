@@ -1,6 +1,6 @@
-# Mukund Programming Tutorials API
+# course echo API
 
-This is a RESTful API for **Mukund Programming Tutorials**, built using **CodeIgniter 4**. The API provides endpoints for managing users, including registration, login, and CRUD operations for various items (or tutorials).
+This is a RESTful API for **course echo**, built using **CodeIgniter 4**. The API provides endpoints for managing users, including registration, login, and CRUD operations for various items (or tutorials).
 
 ## Features
 
